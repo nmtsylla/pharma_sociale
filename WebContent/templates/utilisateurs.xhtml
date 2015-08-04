@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/BasicTemplate.xhtml">
+	
+	<ui:define name="content">
+<h1>Liste utilisateur</h1>
+ 
+ 		<h:dataTable value="#{utilisateurBean.all_users()}" var="c"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Customer ID
+    			</f:facet>
+    				#{c.id}
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Nom
+				</f:facet>
+    				#{c.nom}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				Prénom
+				</f:facet>
+    				#{c.prenom}
+    		</h:column>
+ 
+ 			<h:column>
+    			<f:facet name="header">
+    				userName
+				</f:facet>
+    				#{c.userName}
+    		</h:column>
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				address
+				</f:facet>
+    				#{c.adresse}
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Created Date
+				</f:facet>
+    				#{c.createdAt}
+    		</h:column>
+ 
+    	</h:dataTable>
+    	
+    	<h2>Add New utilisateur</h2>
+ 		<h:form>
+ 
+ 			<h:panelGrid columns="3">
+ 
+				Nom : 
+				<h:inputText id="nom" value="#{utilisateurBean.nom}" 
+					size="20" required="true"
+					label="Name" >
+				</h:inputText>
+ 
+				<h:message for="nom" style="color:red" />
+				
+				Prénom : 
+				<h:inputText id="prenom" value="#{utilisateurBean.prenom}" 
+					size="20" required="true"
+					label="Prénom" >
+				</h:inputText>
+ 
+				<h:message for="prenom" style="color:red" />
+				
+				Nom d'utilisateur : 
+				<h:inputText id="userName" value="#{utilisateurBean.userName}" 
+					size="20" required="true"
+					label="userName" >
+				</h:inputText>
+ 
+				<h:message for="userName" style="color:red" />
+				
+				mot de passe : 
+				<h:inputSecret id="pass" value="#{utilisateurBean.password}" 
+					size="20" required="true"
+					label="password" >
+				</h:inputSecret>
+ 
+				<h:message for="pass" style="color:red" />
+ 
+				Address : 
+				<h:inputTextarea id="address" value="#{utilisateurBean.adresse}" 
+					cols="30" rows="10" required="true"
+					label="Address" >
+				</h:inputTextarea>
+ 
+				<h:message for="address" style="color:red" />
+ 
+			</h:panelGrid>
+ 
+			<h:commandButton value="Submit" action="#{utilisateurBean.addUtilisateur()}" />
+ 
+ 		</h:form>
+ 		
+ 		</ui:define>
+</ui:composition>

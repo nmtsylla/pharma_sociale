@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.Donnateur" table="Donnateur" catalog="java_j2e">
+        <id name="idDonnateur" type="int">
+            <column name="idDonnateur" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur" fetch="select">
+            <column name="id" />
+        </many-to-one>
+        <set name="donRecus" table="DonRecu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idDonnateur" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.DonRecu" />
+        </set>
+    </class>
+</hibernate-mapping>

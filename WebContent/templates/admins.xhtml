@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/BasicTemplate.xhtml">
+	
+	<ui:define name="content">
+<h1>Liste admin</h1>
+ 
+ 		<h:dataTable value="#{adminBean.all_admin()}" var="c"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Customer ID
+    			</f:facet>
+    				#{c.idAdmin}
+    		</h:column>
+ 
+ 
+    	</h:dataTable>
+    	
+    	<h2>Add New admin</h2>
+ 		<h:form>
+ 
+ 			<h:panelGrid columns="3">
+ 
+				Nom : 
+				<h:inputText id="nom" value="#{adminBean.nom}" 
+					size="20" required="true"
+					label="Name" >
+				</h:inputText>
+ 
+				<h:message for="nom" style="color:red" />
+				
+				Prénom : 
+				<h:inputText id="prenom" value="#{adminBean.prenom}" 
+					size="20" required="true"
+					label="Prénom" >
+				</h:inputText>
+ 
+				<h:message for="prenom" style="color:red" />
+				
+				Nom d'admin : 
+				<h:inputText id="userName" value="#{adminBean.userName}" 
+					size="20" required="true"
+					label="userName" >
+				</h:inputText>
+ 
+				<h:message for="userName" style="color:red" />
+				
+				mot de passe : 
+				<h:inputSecret id="pass" value="#{adminBean.password}" 
+					size="20" required="true"
+					label="password" >
+				</h:inputSecret>
+ 
+				<h:message for="pass" style="color:red" />
+ 
+				Address : 
+				<h:inputTextarea id="address" value="#{adminBean.adresse}" 
+					cols="30" rows="10" required="true"
+					label="Address" >
+				</h:inputTextarea>
+ 
+				<h:message for="address" style="color:red" />
+ 
+			</h:panelGrid>
+ 
+			<h:commandButton value="Submit" action="#{adminBean.addAdmin()}" />
+ 
+ 		</h:form>
+ 		
+ 		</ui:define>
+</ui:composition>

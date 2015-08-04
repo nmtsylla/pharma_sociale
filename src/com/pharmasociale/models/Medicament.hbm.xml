@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.Medicament" table="Medicament" catalog="projet_j2e">
+        <id name="idMedicament" type="int">
+            <column name="idMedicament" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="admin" class="com.pharmasociale.models.Admin" fetch="select">
+            <column name="idAdmin" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="nom" length="254" />
+        </property>
+        <property name="reference" type="string">
+            <column name="reference" length="254" />
+        </property>
+        <property name="status" type="java.lang.Short">
+            <column name="status" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="254" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="254" />
+        </property>
+        <set name="medRecus" table="med_recu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMedicament" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.MedRecu" />
+        </set>
+    </class>
+</hibernate-mapping>

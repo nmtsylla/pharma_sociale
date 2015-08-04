@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.MedDistrib" table="med_distrib" catalog="java_j2e">
+        <composite-id name="id" class="com.pharmasociale.models.MedDistribId">
+            <key-property name="idDon" type="java.lang.Integer">
+                <column name="idDon" />
+            </key-property>
+            <key-property name="idMedicament" type="java.lang.Integer">
+                <column name="idMedicament" />
+            </key-property>
+            <key-property name="quantite" type="java.lang.Integer">
+                <column name="quantite" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="donDistribue" class="com.pharmasociale.models.DonDistribue" update="false" insert="false" fetch="select">
+            <column name="idDon" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

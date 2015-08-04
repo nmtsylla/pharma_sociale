@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.Pharmacie" table="Pharmacie" catalog="projet_j2e">
+        <id name="idPharmacie" type="int">
+            <column name="idPharmacie" />
+            <generator class="assigned" />
+        </id>
+        <property name="enseigne" type="string">
+            <column name="enseigne" length="254" />
+        </property>
+        <property name="reference" type="string">
+            <column name="reference" length="254" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" length="254" />
+        </property>
+        <property name="ville" type="string">
+            <column name="ville" length="254" />
+        </property>
+        <set name="utilisateurs" table="Utilisateur" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPharmacie" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.Utilisateur" />
+        </set>
+    </class>
+</hibernate-mapping>
