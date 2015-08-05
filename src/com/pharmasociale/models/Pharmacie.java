@@ -81,5 +81,9 @@ public class Pharmacie implements java.io.Serializable {
 	public void setUtilisateurs(Set utilisateurs) {
 		this.utilisateurs = utilisateurs;
 	}
+	
+	public void addUtilisateu(Utilisateur u){
+		this.utilisateurs.add(u);
+	}
 
 }
