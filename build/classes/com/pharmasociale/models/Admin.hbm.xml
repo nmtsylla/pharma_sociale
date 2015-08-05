@@ -8,9 +8,11 @@
             <column name="idAdmin" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur" fetch="select">
+        <!-- <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur">
             <column name="id" />
-        </many-to-one>
+        </many-to-one> -->
+        <one-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur"></one-to-one>
+        
         <set name="medicaments" table="Medicament" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idAdmin" />

@@ -1,17 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
 
 <body>
 
 
 <div id="header">
     <ui:insert name="header">
-    	Header area.  See comments below this line in the source.
-    	<!--  include your header file or uncomment the include below and create header.xhtml in this directory -->
-    	
+    	<div id="menu" class="ui-widget">
+                <ul id="main">
+                    <li class="current_page_item"><a href="#{request.contextPath}/templates/welcome.xhtml">Accueil</a></li>
+                    <li><a href="#{request.contextPath}/templates/medicament.xhtml">Medicament</a></li>
+                    <li><a href="#{request.contextPath}/templates/pharmacie.xhtml">Pharmacie</a></li>
+                    <li><a href="#{request.contextPath}/templates/utilisateurs.xhtml" >Utilisateur</a></li>
+                    <li><a href="#{request.contextPath}/templates/admins.xhtml" >Admin</a></li>
+                </ul>
+            </div>
     </ui:insert>
 </div>
 

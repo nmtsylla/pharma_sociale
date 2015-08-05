@@ -109,7 +109,7 @@ public class AdminBean implements Serializable {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.save(u);
+            //session.save(u);
             admin.setUtilisateur(u);
             session.save(admin);
             session.getTransaction().commit();
@@ -127,7 +127,6 @@ public class AdminBean implements Serializable {
 	}
 	
 	public List all_admin() {
-        //boolean valid = (new UtilisateurHome()).find(user, pwd);
         Session session = HibernateUtil.getSessionFactory().openSession();
         //session.beginTransaction();
         String SQL_QUERY = " from Admin";
