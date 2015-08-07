@@ -1,6 +1,6 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class Beneficiaire implements java.io.Serializable {
 
 	private int idBeneficiaire;
 	private Utilisateur utilisateur;
-	private Set donDistribues = new HashSet(0);
+	private Set donAttribues = new HashSet(0);
 
 	public Beneficiaire() {
 	}
@@ -22,10 +22,10 @@ public class Beneficiaire implements java.io.Serializable {
 	}
 
 	public Beneficiaire(int idBeneficiaire, Utilisateur utilisateur,
-			Set donDistribues) {
+			Set donAttribues) {
 		this.idBeneficiaire = idBeneficiaire;
 		this.utilisateur = utilisateur;
-		this.donDistribues = donDistribues;
+		this.donAttribues = donAttribues;
 	}
 
 	public int getIdBeneficiaire() {
@@ -44,12 +44,12 @@ public class Beneficiaire implements java.io.Serializable {
 		this.utilisateur = utilisateur;
 	}
 
-	public Set getDonDistribues() {
-		return this.donDistribues;
+	public Set getDonAttribues() {
+		return this.donAttribues;
 	}
 
-	public void setDonDistribues(Set donDistribues) {
-		this.donDistribues = donDistribues;
+	public void setDonAttribues(Set donAttribues) {
+		this.donAttribues = donAttribues;
 	}
 
 }

@@ -1,23 +1,28 @@
 package com.pharmasociale.utils;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-//import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 public class HibernateUtil {
-	 private static final SessionFactory sessionFactory=buildSessionFactory();
-	 
-	   public static SessionFactory buildSessionFactory(){
-	        try {
-	            return new Configuration().configure().buildSessionFactory();
-	        } catch (Throwable ex) {
-	            System.err.println("Initial SessionFactory creation failed." + ex);
-	            throw new ExceptionInInitializerError(ex);
-	        }
-	    }
-	 
-	    public static SessionFactory getSessionFactory() {
-	        return sessionFactory;
-	    }
-} 
+
+	private static  SessionFactory sessionFactory = configureSessionFactory();
+
+
+	public  static SessionFactory configureSessionFactory ( ) throws  HibernateException {
+     
+		Configuration configuration = new Configuration();
+       configuration.configure("/hibernate.cfg.xml");
+       ServiceRegistry  serviceRegistry = new ServiceRegistryBuilder().applySettings
+        (configuration.getProperties()).buildServiceRegistry();        
+         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+         
+         return sessionFactory;
+}
+	
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+}

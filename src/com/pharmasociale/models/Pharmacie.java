@@ -1,6 +1,6 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class Pharmacie implements java.io.Serializable {
 	private String reference;
 	private String adresse;
 	private String ville;
-	private Set utilisateurs = new HashSet(0);
+	private Set pharmaciens = new HashSet(0);
 
 	public Pharmacie() {
 	}
@@ -25,13 +25,13 @@ public class Pharmacie implements java.io.Serializable {
 	}
 
 	public Pharmacie(int idPharmacie, String enseigne, String reference,
-			String adresse, String ville, Set utilisateurs) {
+			String adresse, String ville, Set pharmaciens) {
 		this.idPharmacie = idPharmacie;
 		this.enseigne = enseigne;
 		this.reference = reference;
 		this.adresse = adresse;
 		this.ville = ville;
-		this.utilisateurs = utilisateurs;
+		this.pharmaciens = pharmaciens;
 	}
 
 	public int getIdPharmacie() {
@@ -74,16 +74,12 @@ public class Pharmacie implements java.io.Serializable {
 		this.ville = ville;
 	}
 
-	public Set getUtilisateurs() {
-		return this.utilisateurs;
+	public Set getPharmaciens() {
+		return this.pharmaciens;
 	}
 
-	public void setUtilisateurs(Set utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
-	
-	public void addUtilisateu(Utilisateur u){
-		this.utilisateurs.add(u);
+	public void setPharmaciens(Set pharmaciens) {
+		this.pharmaciens = pharmaciens;
 	}
 
 }

@@ -2,15 +2,15 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="projet_j2e" match-name="Admin"/>
-  <table-filter match-catalog="projet_j2e" match-name="Beneficiaire"/>
-  <table-filter match-catalog="projet_j2e" match-name="DonDistribue"/>
-  <table-filter match-catalog="projet_j2e" match-name="DonRecu"/>
-  <table-filter match-catalog="projet_j2e" match-name="Donnateur"/>
-  <table-filter match-catalog=projet_j2e match-name="Medicament"/>
-  <table-filter match-catalog="projet_j2e" match-name="Pharmacie"/>
-  <table-filter match-catalog="projet_j2e" match-name="Pharmacien"/>
-  <table-filter match-catalog="projet_j2e" match-name="Utilisateur"/>
-  <table-filter match-catalog="projet_j2e" match-name="med_distrib"/>
-  <table-filter match-catalog="projet_j2e" match-name="med_recu"/>
+  <table-filter match-catalog="java_j2e" match-name="Admin"/>
+  <table-filter match-catalog="java_j2e" match-name="Beneficiaire"/>
+  <table-filter match-catalog="java_j2e" match-name="Don"/>
+  <table-filter match-catalog="java_j2e" match-name="DonAttribue"/>
+  <table-filter match-catalog="java_j2e" match-name="Donnateur"/>
+  <table-filter match-catalog="java_j2e" match-name="LigneDon"/>
+  <table-filter match-catalog="java_j2e" match-name="LigneDonAttribue"/>
+  <table-filter match-catalog="java_j2e" match-name="Medicament"/>
+  <table-filter match-catalog="java_j2e" match-name="Pharmacie"/>
+  <table-filter match-catalog="java_j2e" match-name="Pharmacien"/>
+  <table-filter match-catalog="java_j2e" match-name="Utilisateur"/>
 </hibernate-reverse-engineering>

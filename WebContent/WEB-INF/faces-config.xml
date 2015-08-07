@@ -31,6 +31,30 @@
     </managed-bean>
     
     <managed-bean>
+	    <managed-bean-name>donnateurBean</managed-bean-name>
+	    <managed-bean-class>
+	      com.pharmasociale.beans.DonnateurBean
+	    </managed-bean-class>
+	    <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+	    <managed-bean-name>benefBean</managed-bean-name>
+	    <managed-bean-class>
+	      com.pharmasociale.beans.BeneficiaireBean
+	    </managed-bean-class>
+	    <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+	    <managed-bean-name>donBean</managed-bean-name>
+	    <managed-bean-class>
+	      com.pharmasociale.beans.DonBean
+	    </managed-bean-class>
+	    <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
 	    <managed-bean-name>adminBean</managed-bean-name>
 	    <managed-bean-class>
 	      com.pharmasociale.beans.AdminBean
@@ -72,7 +96,7 @@
 	<navigation-rule>
 		<from-view-id>/templates/login.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{loginBean.validateUsernamePassword}</from-action>
+			<from-action>#{loginBean.validateUsernamePassword()}</from-action>
 			<from-outcome>true</from-outcome>
 			<to-view-id>/templates/welcome.xhtml</to-view-id>
 		</navigation-case>
@@ -81,7 +105,7 @@
 	<navigation-rule>
 		<from-view-id>/templates/utilisateurs.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{utilisateurBean.addUtilisateur}</from-action>
+			<from-action>#{utilisateurBean.addUtilisateur()}</from-action>
 			<from-outcome>true</from-outcome>
 			<to-view-id>/templates/utilisateurs.xhtml</to-view-id>
 		</navigation-case>
@@ -90,7 +114,7 @@
 	<navigation-rule>
 		<from-view-id>/templates/admins.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{adminBean.addAdmin}</from-action>
+			<from-action>#{adminBean.addAdmin()}</from-action>
 			<from-outcome>true</from-outcome>
 			<to-view-id>/templates/admins.xhtml</to-view-id>
 		</navigation-case>
@@ -99,7 +123,7 @@
 	<navigation-rule>
 		<from-view-id>/templates/medicament.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{medicamentBean.addMedicament}</from-action>
+			<from-action>#{medicamentBean.addMedicament()}</from-action>
 			<from-outcome>true</from-outcome>
 			<to-view-id>/templates/medicament.xhtml</to-view-id>
 		</navigation-case>
@@ -109,9 +133,36 @@
 	<navigation-rule>
 		<from-view-id>/templates/pharmacie.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{pharmacyBean.addPharmacy}</from-action>
+			<from-action>#{pharmacyBean.addPharmacy()}</from-action>
 			<from-outcome>true</from-outcome>
 			<to-view-id>/templates/pharmacie.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/templates/beneficiaires.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{benefBean.addBeneficiaire()}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/templates/beneficiaires.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/templates/dons.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.addDon()}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/templates/dons.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/templates/donnateurs.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donnateurBean.addDonnateur()}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/templates/donnateurs.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

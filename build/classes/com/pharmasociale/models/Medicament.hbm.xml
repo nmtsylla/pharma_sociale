@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.pharmasociale.models.Medicament" table="Medicament" catalog="projet_j2e">
+    <class name="com.pharmasociale.models.Medicament" table="Medicament" catalog="java_j2e">
         <id name="idMedicament" type="int">
             <column name="idMedicament" />
             <generator class="assigned" />
         </id>
         <many-to-one name="admin" class="com.pharmasociale.models.Admin" fetch="select">
-            <column name="idAdmin" />
+            <column name="IdAdmin" />
         </many-to-one>
         <property name="nom" type="string">
             <column name="nom" length="254" />
@@ -26,11 +26,17 @@
         <property name="description" type="string">
             <column name="description" length="254" />
         </property>
-        <set name="medRecus" table="med_recu" inverse="true" lazy="true" fetch="select">
+        <set name="ligneDons" table="LigneDon" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idMedicament" />
             </key>
-            <one-to-many class="com.pharmasociale.models.MedRecu" />
+            <one-to-many class="com.pharmasociale.models.LigneDon" />
+        </set>
+        <set name="ligneDonAttribues" table="LigneDonAttribue" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMedicament" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.LigneDonAttribue" />
         </set>
     </class>
 </hibernate-mapping>

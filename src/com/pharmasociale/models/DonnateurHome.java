@@ -1,6 +1,6 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;

@@ -1,6 +1,6 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,8 @@ public class Medicament implements java.io.Serializable {
 	private Short status;
 	private String code;
 	private String description;
-	private Set medRecus = new HashSet(0);
+	private Set ligneDons = new HashSet(0);
+	private Set ligneDonAttribues = new HashSet(0);
 
 	public Medicament() {
 	}
@@ -28,7 +29,7 @@ public class Medicament implements java.io.Serializable {
 
 	public Medicament(int idMedicament, Admin admin, String nom,
 			String reference, Short status, String code, String description,
-			Set medRecus) {
+			Set ligneDons, Set ligneDonAttribues) {
 		this.idMedicament = idMedicament;
 		this.admin = admin;
 		this.nom = nom;
@@ -36,7 +37,8 @@ public class Medicament implements java.io.Serializable {
 		this.status = status;
 		this.code = code;
 		this.description = description;
-		this.medRecus = medRecus;
+		this.ligneDons = ligneDons;
+		this.ligneDonAttribues = ligneDonAttribues;
 	}
 
 	public int getIdMedicament() {
@@ -95,12 +97,20 @@ public class Medicament implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public Set getMedRecus() {
-		return this.medRecus;
+	public Set getLigneDons() {
+		return this.ligneDons;
 	}
 
-	public void setMedRecus(Set medRecus) {
-		this.medRecus = medRecus;
+	public void setLigneDons(Set ligneDons) {
+		this.ligneDons = ligneDons;
+	}
+
+	public Set getLigneDonAttribues() {
+		return this.ligneDonAttribues;
+	}
+
+	public void setLigneDonAttribues(Set ligneDonAttribues) {
+		this.ligneDonAttribues = ligneDonAttribues;
 	}
 
 }

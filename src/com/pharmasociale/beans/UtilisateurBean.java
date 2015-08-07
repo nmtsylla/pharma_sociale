@@ -1,6 +1,7 @@
 package com.pharmasociale.beans;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -23,10 +24,11 @@ import com.pharmasociale.utils.HibernateUtil;
 @SessionScoped
 public class UtilisateurBean implements Serializable {
 	
+	java.util.Date date= new java.util.Date();
+	
 	private static final long serialVersionUID = 1094801825748586363L;
 	UtilisateurHome userDao;
 	
-	private int id;
 	private Pharmacie pharmacie;
 	private String nom;
 	private String prenom;
@@ -36,14 +38,7 @@ public class UtilisateurBean implements Serializable {
 	private String adresse;
 	private Date createdAt;
 	
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public Pharmacie getPharmacie() {
 		return this.pharmacie;
 	}
@@ -104,8 +99,8 @@ public class UtilisateurBean implements Serializable {
 		return this.createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt() {
+		this.createdAt = new Timestamp(date.getTime());
 	}
 	
 	public String addUtilisateur(){
@@ -115,14 +110,17 @@ public class UtilisateurBean implements Serializable {
 		u.setPrenom(getPrenom());
 		u.setUserName(getUserName());
 		u.setPassword(getPassword());
+		u.setCreatedAt(getCreatedAt());
 		u.setAdresse(getAdresse());
 		//userDao.persist(u);
 		Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.save(u);
+            System.out.println("before save : user id's = "+u.getIdUtilisateur()+ " , ");
+            session.persist(u);
             session.getTransaction().commit();
+            System.out.println("after save : user id's = "+u.getIdUtilisateur()+ " , ");
             return "true";
         } catch (RuntimeException e) {
             if (trns != null) {

@@ -1,14 +1,20 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.List;
+
 import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+
+import com.pharmasociale.utils.HibernateUtil;
 
 /**
  * Home object for domain model class Medicament.
@@ -23,13 +29,33 @@ public class MedicamentHome {
 
 	protected SessionFactory getSessionFactory() {
 		try {
-			return (SessionFactory) new InitialContext()
-					.lookup("SessionFactory");
+			return HibernateUtil.configureSessionFactory();
 		} catch (Exception e) {
 			log.error("Could not locate SessionFactory in JNDI", e);
 			throw new IllegalStateException(
 					"Could not locate SessionFactory in JNDI");
 		}
+	}
+	
+	public String addMedicament(Medicament u){
+		
+		Transaction trns = null;
+        Session session = getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            session.save(u);
+            trns.commit();
+            return "true";
+        } catch (RuntimeException e) {
+            if (trns != null) {
+                trns.rollback();
+            }
+            e.printStackTrace();
+            return "false";
+        } finally {
+            session.flush();
+            session.close();
+        }
 	}
 
 	public void persist(Medicament transientInstance) {

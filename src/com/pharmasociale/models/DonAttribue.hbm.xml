@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.DonAttribue" table="DonAttribue" catalog="java_j2e">
+        <id name="idDon" type="int">
+            <column name="idDon" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pharmacien" class="com.pharmasociale.models.Pharmacien" fetch="select">
+            <column name="idPharmacien" />
+        </many-to-one>
+        <many-to-one name="beneficiaire" class="com.pharmasociale.models.Beneficiaire" fetch="select">
+            <column name="idBeneficiaire" />
+        </many-to-one>
+        <property name="note" type="timestamp">
+            <column name="note" length="19" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="createdAt" length="19" not-null="true" />
+        </property>
+        <property name="upadatedAt" type="timestamp">
+            <column name="upadatedAt" length="19" not-null="true" />
+        </property>
+        <set name="ligneDonAttribues" table="LigneDonAttribue" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idDon" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.LigneDonAttribue" />
+        </set>
+    </class>
+</hibernate-mapping>

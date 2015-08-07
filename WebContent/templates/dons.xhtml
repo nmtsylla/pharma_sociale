@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/BasicTemplate.xhtml">
+	
+	<ui:define name="content">
+ 
+ 	<h:form id="form1">
+ 		<p:growl id="messages" showDetail="true"/>
+ 		<p:dataTable value="#donBean.all_don()}" var="c"
+    			styleClass="zoneLabel" rows="10" paginator="true" editable="true"
+    			headerClass="order-table-header" paginatorPosition="bottom"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+ 						 <f:facet name="header">
+                 Don List
+             </f:facet>
+             <p:ajax event="rowEdit" update=":form1:messages" />
+             <p:ajax event="rowEditCancel"  update=":form1:messages" />
+
+    		<p:column>
+    			<f:facet name="header">
+    				Donnateur ID
+    			</f:facet>
+    				#{donBean.idDon}
+    		</p:column>
+    		
+    		
+ 
+    	</p:dataTable>
+   	</h:form>
+    	
+    	<h2>Add New donnateur</h2>
+ 		<h:form>
+ 
+ 			<h:panelGrid>
+ 
+				Nom : 
+				<h:inputText id="nom" value="#{donBean.donnateur}" 
+					size="20" required="true"
+					label="Name" >
+				</h:inputText>
+ 
+				<h:message for="nom" style="color:red" />
+				
+				Pharmacien
+				<h:selectOneMenu id="txt3"  label="Text 3">
+					<f:selectItems value="#{donBean.medicaments}"/>
+	            </h:selectOneMenu>
+ 
+				<h:message for="prenom" style="color:red" />
+				
+			</h:panelGrid>
+ 
+			<h:commandButton value="Submit" action="#{donBean.addDon()}" />
+ 
+ 		</h:form>
+ 		
+ 		</ui:define>
+</ui:composition>

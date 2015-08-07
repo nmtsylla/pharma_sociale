@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.pharmasociale.models.LigneDonAttribue" table="LigneDonAttribue" catalog="java_j2e">
+        <composite-id name="id" class="com.pharmasociale.models.LigneDonAttribueId">
+            <key-property name="idDon" type="java.lang.Integer">
+                <column name="idDon" />
+            </key-property>
+            <key-property name="idMedicament" type="java.lang.Integer">
+                <column name="idMedicament" />
+            </key-property>
+            <key-property name="qte" type="java.lang.Integer">
+                <column name="qte" />
+            </key-property>
+            <key-property name="dateExpiration" type="date">
+                <column name="date_expiration" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="medicament" class="com.pharmasociale.models.Medicament" update="false" insert="false" fetch="select">
+            <column name="idMedicament" />
+        </many-to-one>
+        <many-to-one name="donAttribue" class="com.pharmasociale.models.DonAttribue" update="false" insert="false" fetch="select">
+            <column name="idDon" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

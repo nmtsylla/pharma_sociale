@@ -1,21 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.pharmasociale.models.Admin" table="Admin" catalog="projet_j2e">
+    <class name="com.pharmasociale.models.Admin" table="Admin" catalog="java_j2e">
         <id name="idAdmin" type="int">
-            <column name="idAdmin" />
+            <column name="IdAdmin" />
             <generator class="assigned" />
         </id>
-        <!-- <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur">
-            <column name="id" />
-        </many-to-one> -->
-        <one-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur"></one-to-one>
-        
+        <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur" fetch="select" lazy="false">
+            <column name="idUtilisateur" />
+        </many-to-one>
         <set name="medicaments" table="Medicament" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idAdmin" />
+                <column name="IdAdmin" />
             </key>
             <one-to-many class="com.pharmasociale.models.Medicament" />
         </set>

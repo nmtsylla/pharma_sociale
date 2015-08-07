@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/BasicTemplate.xhtml">
+
+
+    <ui:define name="content">
+        <p:outputLabel value="Welcome #{loginBean.user}"></p:outputLabel>
+        <h1>Liste pharmacie</h1>
+
+		<h:form id="form1">
+	 	 <p:growl id="messages" showDetail="true"/>
+	 		<p:dataTable value="#{pharmacyBean.all_pharmacy()}" var="c"
+			styleClass="zoneLabel" rows="10" paginator="true" editable="true"
+			headerClass="order-table-header" paginatorPosition="bottom"
+			rowClasses="order-table-odd-row,order-table-even-row">
+
+			<f:facet name="header">
+								 Pharmacie List
+						 </f:facet>
+						 <p:ajax event="rowEdit"  update=":form1:messages" />
+						 <p:ajax event="rowEditCancel"  update=":form1:messages" />
+
+	 			<p:column headerText="Reference">
+			        <h:outputText value="#{c.reference}" />
+			    </p:column>
+
+			    <p:column headerText="Enseigne">
+			        <h:outputText value="#{c.enseigne}" />
+			    </p:column>
+
+			    <p:column headerText="Ville">
+			        <h:outputText value="#{c.ville}" />
+			    </p:column>
+
+
+
+					<p:column headerText="Options">
+						<p:rowEditor />
+					</p:column>
+
+			</p:dataTable>
+	
+		</h:form>
+		
+    	
+ 		<p:fieldset legend="Add New medicament" id="tabFormAD"  style="font-size:11px;" >
+ 		<h:form>
+ 			<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+
+				Reference :
+				<p:inputText id="reference" value="#{pharmacyBean.reference}"
+					size="20" required="true"
+					label="Reference" >
+				</p:inputText>
+
+				<p:message for="reference" style="color:red" />
+
+				Enseigne :
+				<p:inputText id="enseigne" value="#{pharmacyBean.enseigne}"
+					size="20" required="true"
+					label="Enseigne" >
+				</p:inputText>
+
+				<p:message for="enseigne" style="color:red" />
+
+
+				Ville:
+				<p:inputText id="ville" value="#{pharmacyBean.ville}"
+					size="20" required="true"
+					label="Ville">
+				</p:inputText>
+
+				<p:message for="ville" style="color:red" />
+
+			</h:panelGrid>
+
+			<h:commandButton value="Submit" action="#{pharmacyBean.addPharmacy()}"/>
+
+ 		</h:form>
+ 		</p:fieldset>
+
+
+    </ui:define>
+</ui:composition>

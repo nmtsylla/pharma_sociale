@@ -9,7 +9,7 @@
 <h1>Liste admin</h1>
  
  		<h:dataTable value="#{adminBean.all_admin()}" var="c"
-    			styleClass="order-table"
+    			styleClass="order-table" 
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row"
     		>
@@ -20,14 +20,27 @@
     			</f:facet>
     				#{c.idAdmin}
     		</h:column>
- 
+    		<h:column>
+    			<f:facet name="header">
+    				Nom
+    			</f:facet>
+    				#{c.utilisateur.nom}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				userName
+    			</f:facet>
+    				#{c.utilisateur.userName}
+    		</h:column>
+    		
+    		
  
     	</h:dataTable>
     	
     	<h2>Add New admin</h2>
  		<h:form>
  
- 			<h:panelGrid columns="3">
+ 			<h:panelGrid>
  
 				Nom : 
 				<h:inputText id="nom" value="#{adminBean.nom}" 

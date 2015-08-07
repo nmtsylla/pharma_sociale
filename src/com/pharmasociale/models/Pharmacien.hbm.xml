@@ -1,27 +1,30 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="com.pharmasociale.models.Pharmacien" table="Pharmacien" catalog="java_j2e">
         <id name="idPharmacien" type="int">
             <column name="idPharmacien" />
             <generator class="assigned" />
         </id>
-        <property name="id" type="java.lang.Integer">
-            <column name="id" />
-        </property>
-        <set name="donDistribues" table="DonDistribue" inverse="true" lazy="true" fetch="select">
+        <many-to-one name="pharmacie" class="com.pharmasociale.models.Pharmacie" fetch="select" lazy="false">
+            <column name="idPharmacie" />
+        </many-to-one>
+        <many-to-one name="utilisateur" class="com.pharmasociale.models.Utilisateur" fetch="select"  lazy="false">
+            <column name="idUtilisateur" />
+        </many-to-one>
+        <set name="donAttribues" table="DonAttribue" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idPharmacien" />
             </key>
-            <one-to-many class="com.pharmasociale.models.DonDistribue" />
+            <one-to-many class="com.pharmasociale.models.DonAttribue" />
         </set>
-        <set name="donRecus" table="DonRecu" inverse="true" lazy="true" fetch="select">
+        <set name="dons" table="Don" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idPharmacien" />
             </key>
-            <one-to-many class="com.pharmasociale.models.DonRecu" />
+            <one-to-many class="com.pharmasociale.models.Don" />
         </set>
     </class>
 </hibernate-mapping>

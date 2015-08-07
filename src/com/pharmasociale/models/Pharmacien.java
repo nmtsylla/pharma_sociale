@@ -1,6 +1,6 @@
 package com.pharmasociale.models;
 
-// Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0
+// Generated 5 août 2015 12:19:05 by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,9 +11,10 @@ import java.util.Set;
 public class Pharmacien implements java.io.Serializable {
 
 	private int idPharmacien;
-	private Integer id;
-	private Set donDistribues = new HashSet(0);
-	private Set donRecus = new HashSet(0);
+	private Pharmacie pharmacie;
+	private Utilisateur utilisateur;
+	private Set donAttribues = new HashSet(0);
+	private Set dons = new HashSet(0);
 
 	public Pharmacien() {
 	}
@@ -22,12 +23,13 @@ public class Pharmacien implements java.io.Serializable {
 		this.idPharmacien = idPharmacien;
 	}
 
-	public Pharmacien(int idPharmacien, Integer id, Set donDistribues,
-			Set donRecus) {
+	public Pharmacien(int idPharmacien, Pharmacie pharmacie,
+			Utilisateur utilisateur, Set donAttribues, Set dons) {
 		this.idPharmacien = idPharmacien;
-		this.id = id;
-		this.donDistribues = donDistribues;
-		this.donRecus = donRecus;
+		this.pharmacie = pharmacie;
+		this.utilisateur = utilisateur;
+		this.donAttribues = donAttribues;
+		this.dons = dons;
 	}
 
 	public int getIdPharmacien() {
@@ -38,28 +40,36 @@ public class Pharmacien implements java.io.Serializable {
 		this.idPharmacien = idPharmacien;
 	}
 
-	public Integer getId() {
-		return this.id;
+	public Pharmacie getPharmacie() {
+		return this.pharmacie;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPharmacie(Pharmacie pharmacie) {
+		this.pharmacie = pharmacie;
 	}
 
-	public Set getDonDistribues() {
-		return this.donDistribues;
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
 	}
 
-	public void setDonDistribues(Set donDistribues) {
-		this.donDistribues = donDistribues;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-	public Set getDonRecus() {
-		return this.donRecus;
+	public Set getDonAttribues() {
+		return this.donAttribues;
 	}
 
-	public void setDonRecus(Set donRecus) {
-		this.donRecus = donRecus;
+	public void setDonAttribues(Set donAttribues) {
+		this.donAttribues = donAttribues;
+	}
+
+	public Set getDons() {
+		return this.dons;
+	}
+
+	public void setDons(Set dons) {
+		this.dons = dons;
 	}
 
 }

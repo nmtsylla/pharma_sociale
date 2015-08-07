@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.pharmasociale.models.Pharmacie" table="Pharmacie" catalog="projet_j2e">
+    <class name="com.pharmasociale.models.Pharmacie" table="Pharmacie" catalog="java_j2e">
         <id name="idPharmacie" type="int">
             <column name="idPharmacie" />
             <generator class="assigned" />
@@ -20,11 +20,11 @@
         <property name="ville" type="string">
             <column name="ville" length="254" />
         </property>
-        <set name="utilisateurs" table="Utilisateur" inverse="true" lazy="true" fetch="select">
+        <set name="pharmaciens" table="Pharmacien" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idPharmacie" />
             </key>
-            <one-to-many class="com.pharmasociale.models.Utilisateur" />
+            <one-to-many class="com.pharmasociale.models.Pharmacien" />
         </set>
     </class>
 </hibernate-mapping>

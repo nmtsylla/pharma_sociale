@@ -1,16 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 juin 2015 11:47:43 by Hibernate Tools 4.0.0 -->
+<!-- Generated 5 ao??t 2015 12:19:05 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.pharmasociale.models.Utilisateur" table="Utilisateur" catalog="projet_j2e">
-        <id name="id" type="int">
-            <column name="id" />
-            <generator class="assigned" />
+    <class name="com.pharmasociale.models.Utilisateur" table="Utilisateur" catalog="java_j2e">
+        <id name="idUtilisateur" type="int">
+            <column name="idUtilisateur" />
         </id>
-        <many-to-one name="pharmacie" class="com.pharmasociale.models.Pharmacie" fetch="select">
-            <column name="idPharmacie" />
-        </many-to-one>
         <property name="nom" type="string">
             <column name="nom" length="254" />
         </property>
@@ -24,34 +20,40 @@
             <column name="password" length="254" />
         </property>
         <property name="birthday" type="date">
-            <column name="birthday" length="10" />
+            <column name="birthday" length="19" not-null="true" />
         </property>
         <property name="adresse" type="string">
             <column name="adresse" length="254" />
         </property>
         <property name="createdAt" type="date">
-            <column name="createdAt" length="10" />
+            <column name="createdAt" length="19" not-null="true" />
         </property>
         <property name="updatedAt" type="date">
-            <column name="updatedAt" length="10" />
+            <column name="updatedAt" length="19" not-null="true" />
         </property>
+        <set name="pharmaciens" table="Pharmacien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUtilisateur" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.Pharmacien" />
+        </set>
         <set name="donnateurs" table="Donnateur" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id" />
+                <column name="idUtilisateur" />
             </key>
             <one-to-many class="com.pharmasociale.models.Donnateur" />
         </set>
-        <set name="beneficiaires" table="Beneficiaire" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="id" />
-            </key>
-            <one-to-many class="com.pharmasociale.models.Beneficiaire" />
-        </set>
         <set name="admins" table="Admin" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id" />
+                <column name="idUtilisateur" />
             </key>
             <one-to-many class="com.pharmasociale.models.Admin" />
+        </set>
+        <set name="beneficiaires" table="Beneficiaire" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUtilisateur" />
+            </key>
+            <one-to-many class="com.pharmasociale.models.Beneficiaire" />
         </set>
     </class>
 </hibernate-mapping>

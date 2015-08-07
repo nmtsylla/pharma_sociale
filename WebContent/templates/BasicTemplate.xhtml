@@ -12,9 +12,25 @@
 	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
 	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
 	<title><ui:insert name="title">Pharmacie Sociale</ui:insert></title>
+	<style>
+		ul {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		}
+		
+		li {
+		    float: left;
+		}
+		
+		a {
+		    display: block;
+		    width: 60px;
+		}
+	</style>
 </h:head>
 
-<h:body>
+<h:body  styleClass="page">
 	
 	<div id="header">
 	    <ui:insert name="header">
@@ -27,11 +43,11 @@
 	    </ui:insert>
 	</div>
 	
-	<div id="footer">
+	<!-- <div id="footer">
 	    <ui:insert name="footer">
 	        <ui:include src="/templates/footer.xhtml"/>
 	    </ui:insert>
-	</div>
+	</div> -->
 
 </h:body>
 </html>

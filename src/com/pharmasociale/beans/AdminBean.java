@@ -1,6 +1,7 @@
 package com.pharmasociale.beans;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -9,11 +10,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.jdbc.Work;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import com.pharmasociale.models.Admin;
 import com.pharmasociale.models.Pharmacie;
 import com.pharmasociale.models.Utilisateur;
@@ -24,6 +29,7 @@ import com.pharmasociale.utils.HibernateUtil;
 @SessionScoped
 public class AdminBean implements Serializable {
 	
+	Session session = HibernateUtil.getSessionFactory().openSession();
 	private static final long serialVersionUID = 1094801825748586363L;
 	
 	private int idAdmin;
@@ -33,7 +39,6 @@ public class AdminBean implements Serializable {
 	private String userName;
 	private String password;
 	private String adresse;
-
 	
 	
 	
@@ -109,9 +114,20 @@ public class AdminBean implements Serializable {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            //session.save(u);
-            admin.setUtilisateur(u);
-            session.save(admin);
+            session.createSQLQuery("insert into Utilisateur(nom, prenom, userName, password, adresse) "+
+            		"values(:nom, :prenom, :userName, :password, :adresse)")
+            		.setParameter("nom", getNom())
+            	      .setParameter("prenom", getPrenom())
+            	      .setParameter("userName", getUserName())
+            	      .setParameter("password", getPassword())
+            	      .setParameter("adresse", getAdresse())
+            	      .executeUpdate();
+            session.createSQLQuery("insert into Admin(idUtilisateur) value(last_insert_id())")
+            	      .executeUpdate();
+            
+            String req = "insert into Utilisateur(nom, prenom, userName, password, adresse) "+
+            		"value(:nom, :prenom, :userName, :password, :adresse)";
+            String req2 = "insert into Admin(idUtilisateur) value(last_insert_id())";
             session.getTransaction().commit();
             return "true";
         } catch (RuntimeException e) {
@@ -128,7 +144,6 @@ public class AdminBean implements Serializable {
 	
 	public List all_admin() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        //session.beginTransaction();
         String SQL_QUERY = " from Admin";
         System.out.println(SQL_QUERY);
         Query query = session.createQuery(SQL_QUERY);
